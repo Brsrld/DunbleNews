@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		552827D229C0983400917F95 /* AppViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552827D129C0983400917F95 /* AppViewBuilder.swift */; };
+		552827D429C0985D00917F95 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552827D329C0985D00917F95 /* Endpoints.swift */; };
+		552827D629C098A500917F95 /* RequestMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552827D529C098A500917F95 /* RequestMethods.swift */; };
+		552827D829C09D7000917F95 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552827D729C09D7000917F95 /* Countries.swift */; };
+		552827DA29C09EE300917F95 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552827D929C09EE300917F95 /* HttpClient.swift */; };
+		552827DC29C09EF500917F95 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552827DB29C09EF500917F95 /* Services.swift */; };
+		552827DF29C09F4300917F95 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552827DE29C09F4300917F95 /* ServiceModel.swift */; };
 		55BC00BF29C08D3D007EDFEC /* DunbleNewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC00BE29C08D3D007EDFEC /* DunbleNewsApp.swift */; };
-		55BC00C129C08D3D007EDFEC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC00C029C08D3D007EDFEC /* ContentView.swift */; };
 		55BC00C329C08D3E007EDFEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55BC00C229C08D3E007EDFEC /* Assets.xcassets */; };
 		55BC00C629C08D3E007EDFEC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55BC00C529C08D3E007EDFEC /* Preview Assets.xcassets */; };
 		55BC00D029C0909D007EDFEC /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC00CF29C0909D007EDFEC /* TabItemView.swift */; };
@@ -20,9 +26,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		552827D129C0983400917F95 /* AppViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewBuilder.swift; sourceTree = "<group>"; };
+		552827D329C0985D00917F95 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		552827D529C098A500917F95 /* RequestMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethods.swift; sourceTree = "<group>"; };
+		552827D729C09D7000917F95 /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
+		552827D929C09EE300917F95 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		552827DB29C09EF500917F95 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		552827DE29C09F4300917F95 /* ServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
 		55BC00BB29C08D3D007EDFEC /* DunbleNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DunbleNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55BC00BE29C08D3D007EDFEC /* DunbleNewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DunbleNewsApp.swift; sourceTree = "<group>"; };
-		55BC00C029C08D3D007EDFEC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		55BC00C229C08D3E007EDFEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55BC00C529C08D3E007EDFEC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		55BC00CF29C0909D007EDFEC /* TabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemView.swift; sourceTree = "<group>"; };
@@ -44,6 +56,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		552827CC29C0974600917F95 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				552827DD29C09F3000917F95 /* Models */,
+				552827D329C0985D00917F95 /* Endpoints.swift */,
+				552827D529C098A500917F95 /* RequestMethods.swift */,
+				552827D729C09D7000917F95 /* Countries.swift */,
+				552827D929C09EE300917F95 /* HttpClient.swift */,
+				552827DB29C09EF500917F95 /* Services.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		552827CD29C0977000917F95 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				552827D029C097A200917F95 /* Modifiers */,
+				552827CF29C0979500917F95 /* Cells */,
+				552827CE29C0978B00917F95 /* CustomViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		552827CE29C0978B00917F95 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				55BC00CF29C0909D007EDFEC /* TabItemView.swift */,
+			);
+			name = CustomViews;
+			sourceTree = "<group>";
+		};
+		552827CF29C0979500917F95 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		552827D029C097A200917F95 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				552827D129C0983400917F95 /* AppViewBuilder.swift */,
+			);
+			name = Modifiers;
+			sourceTree = "<group>";
+		};
+		552827DD29C09F3000917F95 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				552827DE29C09F4300917F95 /* ServiceModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		55BC00B229C08D3D007EDFEC = {
 			isa = PBXGroup;
 			children = (
@@ -63,8 +129,10 @@
 		55BC00BD29C08D3D007EDFEC /* DunbleNews */ = {
 			isa = PBXGroup;
 			children = (
+				552827CD29C0977000917F95 /* Views */,
+				552827CC29C0974600917F95 /* Service */,
 				55BC00D229C090E3007EDFEC /* Models */,
-				55BC00CD29C0907C007EDFEC /* Views */,
+				55BC00CD29C0907C007EDFEC /* Screens */,
 				55BC00CC29C0906F007EDFEC /* Core */,
 				55BC00C229C08D3E007EDFEC /* Assets.xcassets */,
 				55BC00C429C08D3E007EDFEC /* Preview Content */,
@@ -83,13 +151,12 @@
 		55BC00CC29C0906F007EDFEC /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				55BC00C029C08D3D007EDFEC /* ContentView.swift */,
 				55BC00BE29C08D3D007EDFEC /* DunbleNewsApp.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
 		};
-		55BC00CD29C0907C007EDFEC /* Views */ = {
+		55BC00CD29C0907C007EDFEC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				55BC00DD29C0945F007EDFEC /* DiscoverView */,
@@ -97,13 +164,12 @@
 				55BC00DB29C0944F007EDFEC /* HomeView */,
 				55BC00CE29C09081007EDFEC /* TabBar */,
 			);
-			path = Views;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		55BC00CE29C09081007EDFEC /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				55BC00CF29C0909D007EDFEC /* TabItemView.swift */,
 				55BC00D929C093B2007EDFEC /* TabbarView.swift */,
 			);
 			path = TabBar;
@@ -211,13 +277,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				552827DC29C09EF500917F95 /* Services.swift in Sources */,
+				552827D829C09D7000917F95 /* Countries.swift in Sources */,
+				552827D629C098A500917F95 /* RequestMethods.swift in Sources */,
 				55BC00D029C0909D007EDFEC /* TabItemView.swift in Sources */,
-				55BC00C129C08D3D007EDFEC /* ContentView.swift in Sources */,
 				55BC00BF29C08D3D007EDFEC /* DunbleNewsApp.swift in Sources */,
+				552827D229C0983400917F95 /* AppViewBuilder.swift in Sources */,
 				55BC00E129C09478007EDFEC /* SearchView.swift in Sources */,
 				55BC00DA29C093B2007EDFEC /* TabbarView.swift in Sources */,
 				55BC00E329C09483007EDFEC /* HomeView.swift in Sources */,
 				55BC00D529C090F9007EDFEC /* MenuItemType.swift in Sources */,
+				552827D429C0985D00917F95 /* Endpoints.swift in Sources */,
+				552827DF29C09F4300917F95 /* ServiceModel.swift in Sources */,
+				552827DA29C09EE300917F95 /* HttpClient.swift in Sources */,
 				55BC00DF29C09470007EDFEC /* DiscoverView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
