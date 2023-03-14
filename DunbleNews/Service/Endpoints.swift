@@ -11,7 +11,6 @@ import SwiftUI
 protocol Endpoint {
     var scheme: String { get }
     var host: String { get }
-    var imageHost: String { get}
     var path: String { get }
     var method: RequestMethod { get }
     var header: [String: String]? { get }
@@ -26,10 +25,6 @@ extension Endpoint {
 
     var host: String {
         return "newsapi.org"
-    }
-    
-    var imageHost: String {
-        return "image.tmdb.org"
     }
 }
 
