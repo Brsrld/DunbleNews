@@ -15,7 +15,7 @@ struct ServiceModel: Codable {
 }
 
 // MARK: - Article
-struct Article: Codable {
+struct Article: Codable, Hashable {
     let source: Source?
     let author: String?
     let title: String?
@@ -24,6 +24,13 @@ struct Article: Codable {
     let urlToImage: String?
     let publishedAt: String?
     let content: String?
+    
+    var hashValue: Int {
+            return title.hashValue
+        }
+    static func == (lhs: Article, rhs: Article) -> Bool {
+        return lhs.title == rhs.title
+    }
 }
 
 // MARK: - Source

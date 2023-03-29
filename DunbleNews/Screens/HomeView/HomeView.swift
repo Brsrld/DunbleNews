@@ -9,21 +9,56 @@ import SwiftUI
 
 struct HomeView: View {
     
-    private let service: NewsServiceable = NewsService()
+    @StateObject var viewModel = HomeViewModel()
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-            .onAppear{
-                Task(priority: .background) {
-                    let result = await service.fetchAllNews(country: .us)
-                    switch result {
-                    case .success(let success):
-                        print(success)
-                    case .failure(let failure):
-                        print(failure)
-                    }
+        baseView()
+    }
+    
+    @ViewBuilder
+    private func baseView() -> some View {
+        switch viewModel.states {
+        case .finished:
+            news()
+        case .loading:
+            ProgressView()
+        case .error(error: let error):
+            ProgressView()
+                .alert(isPresented: $viewModel.showingAlert) {
+                    Alert(title: Text("Error Message"),
+                          message: Text(error),
+                          dismissButton: Alert.Button.default(
+                            Text("Ok"), action: {
+                                viewModel.changeStateToReady()
+                            }
+                          ))
                 }
-            }
+        case .ready:
+            ProgressView()
+                .onAppear {
+                    viewModel.serviceInitialize()
+                }
+        }
+    }
+    
+    @ViewBuilder
+    private func news() -> some View {
+        StaggeredGrid(list: viewModel.allNews,
+                      columns: 2,
+                      showsIndicator: false,
+                      spacing: 12) { news in
+            NewsCell(item: NewsCellItem(imageUrl: news.urlToImage ?? "",
+                                        owner: news.source?.name ?? "",
+                                        title: news.title ?? "",
+                                        date: ""))
+        }
+    }
+    
+    private func columnGrid() -> [GridItem] {
+        return   [
+            GridItem(.flexible(minimum: 0), spacing: 0),
+            GridItem(.flexible(minimum: 0), spacing: 0),
+        ]
     }
 }
 

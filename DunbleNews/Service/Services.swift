@@ -19,6 +19,6 @@ struct NewsService: HTTPClient, NewsServiceable {
     }
     
     func fetchAllNews(country: Countries) async -> Result<ServiceModel, RequestError> {
-        return await sendRequest(endpoint: NewsEndpoint.allNews(country: .us), responseModel: ServiceModel.self)
+        return await sendRequest(endpoint: NewsEndpoint.allNews(country: country), responseModel: ServiceModel.self)
     }
 }

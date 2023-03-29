@@ -38,7 +38,7 @@ extension NewsEndpoint: Endpoint {
     var query: String {
         switch self {
         case .allNews(let country):
-            return "country=\(country.code)"
+            return "country=\(country)"
         case .searchNews(let query):
             return "q=\(query)"
         }
