@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct HomeView: View {
-    
-    @StateObject var viewModel = HomeViewModel()
+    @StateObject private var viewModel: HomeViewModel
     
     var body: some View {
         baseView()
+    }
+    
+    init() {
+        self._viewModel = StateObject(wrappedValue: HomeViewModel())
     }
     
     @ViewBuilder
@@ -20,10 +23,11 @@ struct HomeView: View {
         switch viewModel.states {
         case .finished:
             news()
+                .showTabBar()
         case .loading:
-            ProgressView()
+            ProgressView("Loading")
         case .error(error: let error):
-            ProgressView()
+            ProgressView("Loading")
                 .alert(isPresented: $viewModel.showingAlert) {
                     Alert(title: Text("Error Message"),
                           message: Text(error),
@@ -47,10 +51,22 @@ struct HomeView: View {
                       columns: 2,
                       showsIndicator: false,
                       spacing: 12) { news in
-            NewsCell(item: NewsCellItem(imageUrl: news.urlToImage ?? "",
-                                        owner: news.source?.name ?? "",
-                                        title: news.title ?? "",
-                                        date: ""))
+            NavigationLink {
+                WebView(url: news.url ?? "", showLoading: $viewModel.isloading)
+                    .overlay(viewModel.isloading ? ProgressView("Loading").toAnyView() : EmptyView().toAnyView())
+                    .navigationTitle(news.source?.name ?? "")
+                    .hideTabbar()
+                    .ignoresSafeArea()
+                
+            } label: {
+                NewsCell(item: NewsCellItem(imageUrl: news.urlToImage ?? "",
+                                            owner: news.source?.name ?? "",
+                                            title: news.title ?? "",
+                                            date: "1 hour"))
+            }
+            .onAppear {
+                viewModel.loadMoreContent(item: news)
+            }
         }
     }
     

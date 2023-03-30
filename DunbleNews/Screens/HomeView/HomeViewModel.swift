@@ -9,9 +9,10 @@ import Foundation
 
 final class HomeViewModel: BaseViewModel<HomeViewStates> {
     private let service: NewsServiceable
-    private(set) var allNews: [
-        Article]
     var showingAlert: Bool
+    
+    @Published private(set) var allNews: [Article]
+    @Published var isloading:Bool = false
     
     override init() {
         self.service = NewsService()
@@ -28,8 +29,19 @@ final class HomeViewModel: BaseViewModel<HomeViewStates> {
         changeState(.ready)
     }
     
+    func loadMoreContent(item: Article?) {
+        guard let lastTitle = allNews.last?.title,
+        let itemTitle = item?.title else { return }
+        
+        if lastTitle == itemTitle {
+            fetchNews()
+        }
+    }
+    
     private func fetchNews() {
-        changeState(.loading)
+        if allNews.isEmpty {
+            changeState(.loading)
+        }
         Task { [weak self] in
             guard let self = self else { return }
             let result = await service.fetchAllNews(country: .us)
@@ -37,7 +49,11 @@ final class HomeViewModel: BaseViewModel<HomeViewStates> {
             switch result {
             case .success(let success):
                 guard let articles = success.articles else { return }
-                self.allNews = articles
+                if self.allNews.isEmpty {
+                    self.allNews = articles
+                } else {
+                    self.allNews.append(contentsOf: articles)
+                }
             case .failure(let failure):
                 self.changeState(.error(error: failure.localizedDescription))
                 self.showingAlert.toggle()

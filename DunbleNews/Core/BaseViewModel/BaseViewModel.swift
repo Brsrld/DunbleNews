@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 class BaseViewModel<E: ViewStateProtocol>: ObservableObject {
     @Published var states: E = .ready
     

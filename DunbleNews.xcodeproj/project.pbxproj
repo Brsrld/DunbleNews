@@ -22,6 +22,11 @@
 		552827DA29C09EE300917F95 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552827D929C09EE300917F95 /* HttpClient.swift */; };
 		552827DC29C09EF500917F95 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552827DB29C09EF500917F95 /* Services.swift */; };
 		552827DF29C09F4300917F95 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552827DE29C09F4300917F95 /* ServiceModel.swift */; };
+		556BA17B29D594AC000AFF2E /* CacheAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556BA17A29D594AC000AFF2E /* CacheAsyncImage.swift */; };
+		556BA17D29D5A782000AFF2E /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556BA17C29D5A782000AFF2E /* WebView.swift */; };
+		556BA17F29D5AAA9000AFF2E /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556BA17E29D5AAA9000AFF2E /* View+Extensions.swift */; };
+		556BA18129D5AC6A000AFF2E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556BA18029D5AC6A000AFF2E /* UIView+Extension.swift */; };
+		556BA18329D5AC92000AFF2E /* TabbarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556BA18229D5AC92000AFF2E /* TabbarModifier.swift */; };
 		55BC00BF29C08D3D007EDFEC /* DunbleNewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC00BE29C08D3D007EDFEC /* DunbleNewsApp.swift */; };
 		55BC00C329C08D3E007EDFEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55BC00C229C08D3E007EDFEC /* Assets.xcassets */; };
 		55BC00C629C08D3E007EDFEC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55BC00C529C08D3E007EDFEC /* Preview Assets.xcassets */; };
@@ -49,6 +54,12 @@
 		552827D929C09EE300917F95 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		552827DB29C09EF500917F95 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		552827DE29C09F4300917F95 /* ServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
+		556BA17A29D594AC000AFF2E /* CacheAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheAsyncImage.swift; sourceTree = "<group>"; };
+		556BA17C29D5A782000AFF2E /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		556BA17E29D5AAA9000AFF2E /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		556BA18029D5AC6A000AFF2E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		556BA18229D5AC92000AFF2E /* TabbarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarModifier.swift; sourceTree = "<group>"; };
+		556BA18429D5B7EB000AFF2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		55BC00BB29C08D3D007EDFEC /* DunbleNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DunbleNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55BC00BE29C08D3D007EDFEC /* DunbleNewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DunbleNewsApp.swift; sourceTree = "<group>"; };
 		55BC00C229C08D3E007EDFEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				5502BE0329D462AE0071F585 /* UIScreen+Extension.swift */,
+				556BA17E29D5AAA9000AFF2E /* View+Extensions.swift */,
+				556BA18029D5AC6A000AFF2E /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -116,6 +129,8 @@
 			children = (
 				55BC00CF29C0909D007EDFEC /* TabItemView.swift */,
 				5502BE0529D474880071F585 /* StaggeredGrid.swift */,
+				556BA17A29D594AC000AFF2E /* CacheAsyncImage.swift */,
+				556BA17C29D5A782000AFF2E /* WebView.swift */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -133,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				552827D129C0983400917F95 /* AppViewBuilder.swift */,
+				556BA18229D5AC92000AFF2E /* TabbarModifier.swift */,
 			);
 			name = Modifiers;
 			sourceTree = "<group>";
@@ -164,6 +180,7 @@
 		55BC00BD29C08D3D007EDFEC /* DunbleNews */ = {
 			isa = PBXGroup;
 			children = (
+				556BA18429D5B7EB000AFF2E /* Info.plist */,
 				5502BE0229D4629E0071F585 /* Extensions */,
 				552827CD29C0977000917F95 /* Views */,
 				552827CC29C0974600917F95 /* Service */,
@@ -323,11 +340,16 @@
 				552827D829C09D7000917F95 /* Countries.swift in Sources */,
 				552827D629C098A500917F95 /* RequestMethods.swift in Sources */,
 				55BC00D029C0909D007EDFEC /* TabItemView.swift in Sources */,
+				556BA17B29D594AC000AFF2E /* CacheAsyncImage.swift in Sources */,
+				556BA18329D5AC92000AFF2E /* TabbarModifier.swift in Sources */,
 				55BC00BF29C08D3D007EDFEC /* DunbleNewsApp.swift in Sources */,
 				552827D229C0983400917F95 /* AppViewBuilder.swift in Sources */,
+				556BA17D29D5A782000AFF2E /* WebView.swift in Sources */,
 				55BC00E129C09478007EDFEC /* SearchView.swift in Sources */,
 				55BC00DA29C093B2007EDFEC /* TabbarView.swift in Sources */,
+				556BA18129D5AC6A000AFF2E /* UIView+Extension.swift in Sources */,
 				55BC00E329C09483007EDFEC /* HomeView.swift in Sources */,
+				556BA17F29D5AAA9000AFF2E /* View+Extensions.swift in Sources */,
 				5502BDF529D454E60071F585 /* BaseViewStates.swift in Sources */,
 				5502BDFF29D45C0D0071F585 /* NewsCell.swift in Sources */,
 				55BC00D529C090F9007EDFEC /* MenuItemType.swift in Sources */,
@@ -470,7 +492,7 @@
 				DEVELOPMENT_TEAM = UTN2596CAS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = DunbleNews/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -499,7 +521,7 @@
 				DEVELOPMENT_TEAM = UTN2596CAS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = DunbleNews/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

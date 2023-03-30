@@ -19,11 +19,9 @@ struct TabItemView<Content: View>: View {
     
     var body: some View {
         NavigationStack {
-            NavigationView {
-                content
-            }
-            .navigationTitle(menuItem.title)
-            .navigationBarTitleDisplayMode(.inline)
+            content
+                .navigationTitle(menuItem.title)
+                .navigationBarTitleDisplayMode(.inline)
         }.tabItem {
             Image(systemName: menuItem.imageName).renderingMode(.template)
         }.tag(menuItem)
@@ -33,7 +31,7 @@ struct TabItemView<Content: View>: View {
 struct TabItemView_Previews: PreviewProvider {
     static var previews: some View {
         TabItemView(MenuItemType.search) {
-           HomeView()
+            HomeView()
         }
     }
 }

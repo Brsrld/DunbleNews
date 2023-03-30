@@ -10,6 +10,7 @@ import SwiftUI
 struct NewsCell: View {
     
     let item: NewsCellItem
+    @State private var viewSize = CGSize.zero
     
     init(item: NewsCellItem) {
         self.item = item
@@ -25,7 +26,7 @@ struct NewsCell: View {
 
                     Text(item.title)
                         .modifier(AppViewBuilder(textColor: .black,
-                                                 textFont: .title3,
+                                                 textFont: .subheadline,
                                                  alingment: .leading))
                         .padding(.horizontal)
                     
@@ -39,8 +40,7 @@ struct NewsCell: View {
         .background(Color(red: 211, green: 211, blue: 211))
         .cornerRadius(8)
         .padding(.horizontal)
-        .shadow(radius: 2)
-        
+        .shadow(radius: 5)
     }
     
     @ViewBuilder
@@ -57,21 +57,19 @@ struct NewsCell: View {
     
     @ViewBuilder
     private func movieImage() -> some View {
-        let url = URL(string: item.imageUrl)
-        AsyncImage(url: url) { phase in
+        let url = URL(string: item.imageUrl) ?? .applicationDirectory
+        CacheAsyncImage(url: url) { phase in
             switch phase {
             case .empty:
                 ProgressView()
             case .success(let image):
                 image
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-            case .failure:
-                Image("fail")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            @unknown default:
+                    .scaledToFit()
+            case .failure(_):
                 EmptyView()
+            @unknown default:
+                fatalError()
             }
         }
     }
@@ -85,6 +83,5 @@ struct NewsCell_Previews: PreviewProvider {
                                 date: "2023-03-28T12:20:00Z")
         NewsCell(item: item)
             .previewLayout(.sizeThatFits)
-            //.frame(width: UIScreen.screenWidth / 2.1)
     }
 }

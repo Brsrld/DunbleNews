@@ -15,7 +15,7 @@ struct ServiceModel: Codable {
 }
 
 // MARK: - Article
-struct Article: Codable, Hashable {
+struct Article: Codable {
     let source: Source?
     let author: String?
     let title: String?
@@ -24,13 +24,6 @@ struct Article: Codable, Hashable {
     let urlToImage: String?
     let publishedAt: String?
     let content: String?
-    
-    var hashValue: Int {
-            return title.hashValue
-        }
-    static func == (lhs: Article, rhs: Article) -> Bool {
-        return lhs.title == rhs.title
-    }
 }
 
 // MARK: - Source
@@ -39,3 +32,12 @@ struct Source: Codable {
     let name: String?
 }
 
+// MARK: - Article Extension
+extension Article: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(title)
+    }
+    static func == (lhs: Article, rhs: Article) -> Bool {
+        return lhs.title == rhs.title
+    }
+}
