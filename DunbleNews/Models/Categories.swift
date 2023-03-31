@@ -13,9 +13,9 @@ struct Categories {
 }
 
 enum NewsCategories: CaseIterable {
+    case general
     case business
     case entertainment
-    case general
     case health
     case science
     case sports
@@ -23,12 +23,12 @@ enum NewsCategories: CaseIterable {
     
     var title: String {
         switch self {
-        case .business:
-            return "Business"
-        case .entertainment:
-            return "Entertainment"
         case .general:
             return "General"
+        case .entertainment:
+            return "Entertainment"
+        case .business:
+            return "Business"
         case .health:
             return "Health"
         case .science:

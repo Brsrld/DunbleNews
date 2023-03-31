@@ -19,7 +19,7 @@ struct NewsCell: View {
     var body: some View {
         VStack(spacing: 12) {
             movieImage()
-                .frame(width: 100, height: 120)
+                .frame(height: 100)
             
             HStack {
                 VStack(spacing: 12) {
@@ -66,9 +66,10 @@ struct NewsCell: View {
             case .success(let image):
                 image
                     .resizable()
-                    .scaledToFill()
             case .failure(_):
-                EmptyView()
+                Image(systemName:"exclamationmark.transmission")
+                    .resizable()
+                    .scaledToFit()
             @unknown default:
                 fatalError()
             }

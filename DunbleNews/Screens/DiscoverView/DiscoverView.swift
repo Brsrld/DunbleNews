@@ -38,31 +38,28 @@ struct DiscoverView: View {
             CategoriesCell(image: viewModel.defaultCategory.imageName,
                            title: viewModel.defaultCategory.title)
             .frame(height: geo.size.height / 4)
-            .padding(.horizontal)
+            .padding(.horizontal, 12)
         }
     }
     
     @ViewBuilder
     private func categories(geo: GeometryProxy) -> some View {
-        ScrollView(showsIndicators: false) {
-            LazyVGrid(columns: columnGrid(), spacing: 12) {
-                ForEach(NewsCategories.allCases) { category in
-                    if category != viewModel.defaultCategory {
-                        NavigationLink(destination: SelectedDiscoverView(category: category.title.lowercased())) {
-                            CategoriesCell(image: category.imageName, title: category.title)
-                               .frame(height: geo.size.height / 4)
-                        }
-                    }
-                }
+        StaggeredGrid(list: viewModel.allCategories,
+                      columns: 2,
+                      showsIndicator:false,
+                      spacing: 12) { category in
+            NavigationLink(destination: SelectedDiscoverView(category: category.title.lowercased())) {
+                CategoriesCell(image: category.imageName, title: category.title)
+                    .frame(height: geo.size.height / 4)
+                    .padding(.horizontal, 12)
             }
-            .padding()
         }
     }
     
     private func columnGrid() -> [GridItem] {
         return   [
-            GridItem(.flexible(minimum: 10, maximum: 200)),
-            GridItem(.flexible(minimum: 10, maximum: 200))
+            GridItem(.flexible()),
+            GridItem(.flexible())
         ]
     }
 }

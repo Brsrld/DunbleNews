@@ -8,10 +8,13 @@
 import Foundation
 
 final class DiscoveryViewModel: BaseViewModel<DiscoveryViewStates> {
-        private(set) var defaultCategory: NewsCategories
-
+    
+    var defaultCategory: NewsCategories
+    var allCategories: NewsCategories.AllCases
+    
     override init() {
-        self.defaultCategory = .general
+        self.defaultCategory = NewsCategories.general
+        self.allCategories = NewsCategories.allCases.filter { $0.title != NewsCategories.allCases.first?.title }
     }
 }
 
