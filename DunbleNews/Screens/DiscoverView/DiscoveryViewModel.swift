@@ -8,7 +8,11 @@
 import Foundation
 
 final class DiscoveryViewModel: BaseViewModel<DiscoveryViewStates> {
-    
+        private(set) var defaultCategory: NewsCategories
+
+    override init() {
+        self.defaultCategory = .general
+    }
 }
 
 

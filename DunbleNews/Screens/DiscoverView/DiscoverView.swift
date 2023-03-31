@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DiscoverView: View {
-    
     @ObservedObject var viewModel: DiscoveryViewModel
     
     init() {
@@ -16,31 +15,54 @@ struct DiscoverView: View {
     }
     
     var body: some View {
-        GeometryReader { geo in
-            VStack(spacing: 12) {
-                CategoriesCell(image: NewsCategories.general.imageName,
-                               title: NewsCategories.general.title)
-                    .frame(height: geo.size.height / 4)
-                    .padding(.horizontal)
-                
-                ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: columnGrid(), spacing: 12) {
-                        ForEach(NewsCategories.allCases) { category in
+        baseView()
+    }
+    
+    @ViewBuilder
+    private func baseView() -> some View {
+        switch viewModel.states {
+        case .ready:
+            GeometryReader { geo in
+                VStack(spacing: 12) {
+                    defaulCategory(geo: geo)
+                    categories(geo: geo)
+                }
+                .showTabBar()
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func defaulCategory(geo: GeometryProxy) -> some View {
+        NavigationLink(destination: SelectedDiscoverView(category: viewModel.defaultCategory.title.lowercased())) {
+            CategoriesCell(image: viewModel.defaultCategory.imageName,
+                           title: viewModel.defaultCategory.title)
+            .frame(height: geo.size.height / 4)
+            .padding(.horizontal)
+        }
+    }
+    
+    @ViewBuilder
+    private func categories(geo: GeometryProxy) -> some View {
+        ScrollView(showsIndicators: false) {
+            LazyVGrid(columns: columnGrid(), spacing: 12) {
+                ForEach(NewsCategories.allCases) { category in
+                    if category != viewModel.defaultCategory {
+                        NavigationLink(destination: SelectedDiscoverView(category: category.title.lowercased())) {
                             CategoriesCell(image: category.imageName, title: category.title)
-                                .frame(height: geo.size.height / 4)
+                               .frame(height: geo.size.height / 4)
                         }
                     }
-                    .padding(.horizontal)
                 }
-                .padding(.bottom)
             }
+            .padding()
         }
     }
     
     private func columnGrid() -> [GridItem] {
         return   [
-            GridItem(.flexible()),
-            GridItem(.flexible())
+            GridItem(.flexible(minimum: 10, maximum: 200)),
+            GridItem(.flexible(minimum: 10, maximum: 200))
         ]
     }
 }

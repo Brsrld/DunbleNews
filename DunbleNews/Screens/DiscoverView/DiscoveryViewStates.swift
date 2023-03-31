@@ -8,5 +8,5 @@
 import Foundation
 
 enum DiscoveryViewStates: ViewStateProtocol {
-case ready
+    case ready
 }

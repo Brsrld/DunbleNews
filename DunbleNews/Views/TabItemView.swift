@@ -18,7 +18,7 @@ struct TabItemView<Content: View>: View {
     }
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             content
                 .navigationTitle(menuItem.title)
                 .navigationBarTitleDisplayMode(.inline)

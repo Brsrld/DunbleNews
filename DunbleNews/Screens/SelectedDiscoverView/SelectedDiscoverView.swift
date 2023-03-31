@@ -1,30 +1,31 @@
 //
-//  HomeView.swift
+//  SelectedDiscoverView.swift
 //  DunbleNews
 //
-//  Created by Barış ŞARALDI on 14.03.2023.
+//  Created by Barış ŞARALDI on 31.03.2023.
 //
 
 import SwiftUI
 
-struct HomeView: View {
-    @StateObject private var viewModel: HomeViewModel
+struct SelectedDiscoverView: View {
+    @StateObject private var viewModel: SelectedDiscoverViewModel
     
     var body: some View {
         baseView()
+            .navigationTitle(viewModel.category.capitalized)
     }
     
-    init() {
-        self._viewModel = StateObject(wrappedValue: HomeViewModel())
+    init(category: String) {
+        self._viewModel = StateObject(wrappedValue: SelectedDiscoverViewModel(category: category))
     }
     
     @ViewBuilder
     private func baseView() -> some View {
         switch viewModel.states {
         case .finished:
-            NewsListView(news: viewModel.allNews,
+            NewsListView(news: viewModel.news,
                          isloading: $viewModel.isloading)
-                .showTabBar()
+            .hideTabbar()
         case .loading:
             ProgressView("Loading")
         case .error(error: let error):
@@ -47,8 +48,8 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
+struct SelectedDiscoverView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        SelectedDiscoverView(category: "technology")
     }
 }

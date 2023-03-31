@@ -19,6 +19,7 @@ struct NewsCell: View {
     var body: some View {
         VStack(spacing: 12) {
             movieImage()
+                .frame(width: 100, height: 120)
             
             HStack {
                 VStack(spacing: 12) {
@@ -65,7 +66,7 @@ struct NewsCell: View {
             case .success(let image):
                 image
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
             case .failure(_):
                 EmptyView()
             @unknown default:

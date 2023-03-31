@@ -1,23 +1,25 @@
 //
-//  HomeViewModel.swift
+//  SelectedDiscoverViewModel.swift
 //  DunbleNews
 //
-//  Created by Barış ŞARALDI on 29.03.2023.
+//  Created by Barış ŞARALDI on 31.03.2023.
 //
 
 import Foundation
 
-final class HomeViewModel: BaseViewModel<HomeViewStates> {
+final class SelectedDiscoverViewModel: BaseViewModel<SelectedDiscoverViewStates> {
     private let service: NewsServiceable
     var showingAlert: Bool
-    
-    @Published private(set) var allNews: [Article]
-    @Published var isloading:Bool = false
-    
-    override init() {
+    @Published var isloading:Bool
+    @Published private(set) var news: [Article]
+    private(set) var category: String
+   
+    init(category: String) {
         self.service = NewsService()
-        self.allNews = []
+        self.news = []
         self.showingAlert = false
+        self.isloading = false
+        self.category = category
     }
     
     func serviceInitialize() {
@@ -25,32 +27,21 @@ final class HomeViewModel: BaseViewModel<HomeViewStates> {
     }
     
     func changeStateToReady() {
-        allNews = []
+        news = []
         changeState(.ready)
     }
     
-    func loadMoreContent(item: Article?) {
-        guard let lastTitle = allNews.last?.title,
-        let itemTitle = item?.title else { return }
-        
-        if lastTitle == itemTitle {
-            fetchNews()
-        }
-    }
-    
     private func fetchNews() {
-        if allNews.isEmpty {
-            changeState(.loading)
-        }
+        changeState(.loading)
         Task { [weak self] in
             guard let self = self else { return }
-            let result = await self.service.fetchAllNews(country: .us)
+            let result = await self.service.fetchNewsByCategory(country: .us, category: category)
             self.changeState(.finished)
             switch result {
             case .success(let success):
                 guard let articles = success.articles else { return }
                 DispatchQueue.main.async {
-                    self.allNews = articles
+                    self.news = articles
                 }
             case .failure(let failure):
                 self.changeState(.error(error: failure.localizedDescription))
