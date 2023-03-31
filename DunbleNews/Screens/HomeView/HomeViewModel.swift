@@ -39,20 +39,17 @@ final class HomeViewModel: BaseViewModel<HomeViewStates> {
     }
     
     private func fetchNews() {
-        if allNews.isEmpty {
-            changeState(.loading)
-        }
         Task { [weak self] in
+            changeState(.loading)
             guard let self = self else { return }
             let result = await service.fetchAllNews(country: .us)
             changeState(.finished)
             switch result {
             case .success(let success):
                 guard let articles = success.articles else { return }
-                if self.allNews.isEmpty {
+                DispatchQueue.main.async {
                     self.allNews = articles
-                } else {
-                    self.allNews.append(contentsOf: articles)
+                    print(articles)
                 }
             case .failure(let failure):
                 self.changeState(.error(error: failure.localizedDescription))

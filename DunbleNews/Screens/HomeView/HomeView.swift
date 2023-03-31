@@ -38,7 +38,7 @@ struct HomeView: View {
                           ))
                 }
         case .ready:
-            ProgressView()
+            EmptyView()
                 .onAppear {
                     viewModel.serviceInitialize()
                 }
@@ -65,7 +65,7 @@ struct HomeView: View {
                                             date: "1 hour"))
             }
             .onAppear {
-                viewModel.loadMoreContent(item: news)
+               viewModel.loadMoreContent(item: news)
             }
         }
     }
