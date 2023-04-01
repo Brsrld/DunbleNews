@@ -22,9 +22,12 @@ struct TabItemView<Content: View>: View {
             content
                 .navigationTitle(menuItem.title)
                 .navigationBarTitleDisplayMode(.inline)
-        }.tabItem {
+        }
+        .navigationViewStyle(.stack)
+        .tabItem {
             Image(systemName: menuItem.imageName).renderingMode(.template)
-        }.tag(menuItem)
+        }
+        .tag(menuItem)
     }
 }
 

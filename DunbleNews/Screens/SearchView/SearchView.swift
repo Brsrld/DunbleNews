@@ -8,8 +8,53 @@
 import SwiftUI
 
 struct SearchView: View {
+    
+    @ObservedObject var viewModel: SearchViewModel
+    
+    init() {
+        self._viewModel = ObservedObject(wrappedValue: SearchViewModel())
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        baseView()
+            .searchable(text: $viewModel.searchQuery,
+                        placement: .toolbar,
+                        prompt: "Search news")
+            .onSubmit(of: .search) {
+                viewModel.serviceInitialize()
+            }
+    }
+    
+    @ViewBuilder
+    private func baseView() -> some View {
+        switch viewModel.states {
+        case .ready:
+            CustomStateView(image: "magnifyingglass",
+                            description: "Search Something",
+                            tintColor: .gray)
+        case .error(error: let error):
+            CustomStateView(image: "exclamationmark.transmission",
+                            description: "Something get wrong !",
+                            tintColor: .red)
+            .alert(isPresented: $viewModel.showingAlert) {
+                Alert(title: Text("Error Message"),
+                      message: Text(error),
+                      dismissButton: Alert.Button.default(
+                        Text("Ok"), action: {
+                            viewModel.changeStateToEmpty()
+                        }
+                      ))
+            }
+        case .finished:
+            NewsListView(news: viewModel.news, isloading: $viewModel.isloading)
+                .showTabBar()
+        case .loading:
+            ProgressView("Loading")
+        case .empty:
+            CustomStateView(image: "newspaper",
+                            description: "There is no data :(",
+                            tintColor: .indigo)
+        }
     }
 }
 

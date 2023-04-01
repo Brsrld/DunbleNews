@@ -10,6 +10,12 @@ import SwiftUI
 struct TabbarView: View {
     @State var menuItemType: MenuItemType = .home
     
+    init() {
+        let navBarAppearance = UINavigationBar.appearance()
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: Colors.tabbarTextColor ?? .red]
+        navBarAppearance.titleTextAttributes = [.foregroundColor:  Colors.tabbarTextColor ?? .red]
+    }
+    
     var body: some View {
         TabView(selection: $menuItemType) {
             TabItemView(MenuItemType.home) {

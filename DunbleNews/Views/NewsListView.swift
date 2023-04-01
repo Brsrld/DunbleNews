@@ -28,7 +28,7 @@ struct NewsListView: View {
                 NewsCell(item: NewsCellItem(imageUrl: news.urlToImage ?? "",
                                             owner: news.source?.name ?? "",
                                             title: news.title ?? "",
-                                            date: "1 hour"))
+                                            date: news.publishedAt?.calculateTime() ?? ""))
             }
         }
     }

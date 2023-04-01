@@ -26,9 +26,8 @@ final class SelectedDiscoverViewModel: BaseViewModel<SelectedDiscoverViewStates>
         fetchNews()
     }
     
-    func changeStateToReady() {
-        news = []
-        changeState(.ready)
+    func changeStateToEmpty() {
+        changeState(.empty)
     }
     
     private func fetchNews() {

@@ -8,8 +8,9 @@
 import Foundation
 
 enum HomeViewStates: ViewStateProtocol {
-case ready
-case loading
-case finished
-case error(error: String)
+    case ready
+    case loading
+    case finished
+    case error(error: String)
+    case empty
 }

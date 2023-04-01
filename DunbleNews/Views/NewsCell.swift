@@ -24,21 +24,20 @@ struct NewsCell: View {
             HStack {
                 VStack(spacing: 12) {
                     label(text: item.owner)
-
+                    
                     Text(item.title)
-                        .modifier(AppViewBuilder(textColor: .black,
+                        .modifier(AppViewBuilder(textColor: Color.textColor,
                                                  textFont: .subheadline,
                                                  alingment: .leading))
                         .padding(.horizontal)
                     
                     label(text: item.date)
                         .padding(.bottom)
-                    
                 }
                 Spacer()
             }
         }
-        .background(Color(red: 211, green: 211, blue: 211))
+        .background(Color.cellColor)
         .cornerRadius(8)
         .padding(.horizontal)
         .shadow(radius: 5)
@@ -67,9 +66,17 @@ struct NewsCell: View {
                 image
                     .resizable()
             case .failure(_):
-                Image(systemName:"exclamationmark.transmission")
-                    .resizable()
-                    .scaledToFit()
+                VStack(spacing: 8) {
+                    Image(systemName:"photo.artframe")
+                        .resizable()
+                        .frame(width: 64, height: 64)
+                        .tint(.gray)
+                    
+                    Text("No image included")
+                        .modifier(AppViewBuilder(textColor: .gray,
+                                                 textFont: .footnote,
+                                                 alingment: .center))
+                }
             @unknown default:
                 fatalError()
             }

@@ -29,21 +29,27 @@ struct SelectedDiscoverView: View {
         case .loading:
             ProgressView("Loading")
         case .error(error: let error):
-           ErrorView()
-                .alert(isPresented: $viewModel.showingAlert) {
-                    Alert(title: Text("Error Message"),
-                          message: Text(error),
-                          dismissButton: Alert.Button.default(
-                            Text("Ok"), action: {
-                                viewModel.changeStateToReady()
-                            }
-                          ))
-                }
+            CustomStateView(image: "exclamationmark.transmission",
+                            description: "Something get wrong !",
+                            tintColor: .red)
+            .alert(isPresented: $viewModel.showingAlert) {
+                Alert(title: Text("Error Message"),
+                      message: Text(error),
+                      dismissButton: Alert.Button.default(
+                        Text("Ok"), action: {
+                            viewModel.changeStateToEmpty()
+                        }
+                      ))
+            }
         case .ready:
             ProgressView()
                 .onAppear {
                     viewModel.serviceInitialize()
                 }
+        case .empty:
+            CustomStateView(image: "newspaper",
+                            description: "There is no data :(",
+                            tintColor: .indigo)
         }
     }
 }

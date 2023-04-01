@@ -28,13 +28,15 @@ struct HomeView: View {
         case .loading:
             ProgressView("Loading")
         case .error(error: let error):
-           ErrorView()
+            CustomStateView(image: "exclamationmark.transmission",
+                            description: "Something get wrong !",
+                            tintColor: .red)
                 .alert(isPresented: $viewModel.showingAlert) {
                     Alert(title: Text("Error Message"),
                           message: Text(error),
                           dismissButton: Alert.Button.default(
                             Text("Ok"), action: {
-                                viewModel.changeStateToReady()
+                                viewModel.changeStateToEmpty()
                             }
                           ))
                 }
@@ -43,6 +45,10 @@ struct HomeView: View {
                 .onAppear {
                     viewModel.serviceInitialize()
                 }
+        case .empty:
+            CustomStateView(image: "newspaper",
+                            description: "There is no data :(",
+                            tintColor: .indigo)
         }
     }
 }
