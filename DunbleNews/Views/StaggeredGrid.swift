@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@MainActor
 struct StaggeredGrid<Content: View,T:Hashable>: View{
     
     var content:(T) -> Content

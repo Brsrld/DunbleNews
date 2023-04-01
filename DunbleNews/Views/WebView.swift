@@ -18,9 +18,7 @@ struct WebView: UIViewRepresentable {
             let webView = WKWebView()
             webView.navigationDelegate = context.coordinator
             let request = URLRequest(url: url)
-            DispatchQueue.main.async {
                 webView.load(request)
-            }
             return webView
         } else {
             return WKWebView()
@@ -55,9 +53,5 @@ class WebViewCoordinator: NSObject, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         didFinish()
-    }
-    
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        print(error)
     }
 }

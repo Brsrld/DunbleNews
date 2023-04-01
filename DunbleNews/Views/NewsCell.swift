@@ -86,10 +86,10 @@ struct NewsCell: View {
 
 struct NewsCell_Previews: PreviewProvider {
     static var previews: some View {
-        let item = NewsCellItem(imageUrl: "https://www.reuters.com/resizer/-9uubUtwVpA0QW9zWGHoxPLwhBk=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/PW5QFB7KPVL4HLO3EMDE3LUJFM.jpg",
+        let item = NewsCellItem(imageUrl: "",
                                 owner: "Reuters",
                                 title: "French government rejects union demand to rethink pension bill - Reuters",
-                                date: "2023-03-28T12:20:00Z")
+                                date: "2023-03-28T12:20:00Z".calculateTime())
         NewsCell(item: item)
             .previewLayout(.sizeThatFits)
     }

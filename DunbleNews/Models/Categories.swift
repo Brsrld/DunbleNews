@@ -7,11 +7,6 @@
 
 import Foundation
 
-struct Categories {
-    let title: String
-    let imageName : String
-}
-
 enum NewsCategories: CaseIterable {
     case general
     case business

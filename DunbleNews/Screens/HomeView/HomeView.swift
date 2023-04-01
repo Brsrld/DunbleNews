@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var viewModel: HomeViewModel
+    @ObservedObject private var viewModel: HomeViewModel
     
     var body: some View {
         baseView()
     }
     
     init() {
-        self._viewModel = StateObject(wrappedValue: HomeViewModel())
+        self._viewModel = ObservedObject(wrappedValue: HomeViewModel())
     }
     
     @ViewBuilder
