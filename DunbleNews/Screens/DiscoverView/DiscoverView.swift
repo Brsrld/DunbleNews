@@ -50,10 +50,11 @@ struct DiscoverView: View {
                       spacing: 12) { category in
             NavigationLink(destination: SelectedDiscoverView(category: category.title.lowercased())) {
                 CategoriesCell(image: category.imageName, title: category.title)
-                    .frame(height: geo.size.height / 4)
+                    .frame(height: geo.size.height / 5)
                     .padding(.horizontal, 12)
             }
         }
+                      .padding(.bottom, 2)
     }
     
     private func columnGrid() -> [GridItem] {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TabbarView: View {
-    @State var menuItemType: MenuItemType = .home
+    @State var menuItemType: MenuItemType = .discover
     
     init() {
         let navBarAppearance = UINavigationBar.appearance()

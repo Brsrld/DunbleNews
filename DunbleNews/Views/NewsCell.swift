@@ -10,7 +10,7 @@ import SwiftUI
 struct NewsCell: View {
     
     let item: NewsCellItem
-    @State private var viewSize = CGSize.zero
+    @State var isEmpty = false
     
     init(item: NewsCellItem) {
         self.item = item
@@ -19,7 +19,6 @@ struct NewsCell: View {
     var body: some View {
         VStack(spacing: 12) {
             movieImage()
-                .frame(height: 100)
             
             HStack {
                 VStack(spacing: 12) {
@@ -50,6 +49,7 @@ struct NewsCell: View {
                 .modifier(AppViewBuilder(textColor: .gray,
                                          textFont: .footnote,
                                          alingment: .leading))
+                .lineLimit(1)
             Spacer()
         }
         .padding(.leading)
@@ -57,29 +57,26 @@ struct NewsCell: View {
     
     @ViewBuilder
     private func movieImage() -> some View {
-        let url = URL(string: item.imageUrl) ?? .applicationDirectory
-        CacheAsyncImage(url: url) { phase in
-            switch phase {
-            case .empty:
-                ProgressView()
-            case .success(let image):
-                image
-                    .resizable()
-            case .failure(_):
-                VStack(spacing: 8) {
-                    Image(systemName:"photo.artframe")
-                        .resizable()
-                        .frame(width: 64, height: 64)
-                        .tint(.gray)
-                    
-                    Text("No image included")
-                        .modifier(AppViewBuilder(textColor: .gray,
-                                                 textFont: .footnote,
-                                                 alingment: .center))
+        if let url = URL(string: item.imageUrl) {
+            VStack {
+                CacheAsyncImage(url: url) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                    case .success(let image):
+                        image
+                            .resizable()
+                    case .failure(_):
+                       EmptyView()
+                            .task {
+                                isEmpty.toggle()
+                            }
+                    @unknown default:
+                        fatalError()
+                    }
                 }
-            @unknown default:
-                fatalError()
             }
+            .frame(height: isEmpty ? 0 : 100)
         }
     }
 }
