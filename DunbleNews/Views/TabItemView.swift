@@ -34,7 +34,7 @@ struct TabItemView<Content: View>: View {
 struct TabItemView_Previews: PreviewProvider {
     static var previews: some View {
         TabItemView(MenuItemType.search) {
-            HomeView()
+            HomeView(service: NewsService())
         }
     }
 }

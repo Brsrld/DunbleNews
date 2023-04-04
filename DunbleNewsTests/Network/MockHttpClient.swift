@@ -8,8 +8,22 @@
 import Foundation
 @testable import DunbleNews
 
-final class MockHttpClient: HTTPClient, Mockable {
-    func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type) async -> Result<T, RequestError> {
-        return await loadJson(filename: "News", extensionType: .json, responseModel: T.self)
+final class MockHttpClient: NewsServiceable, Mockable {
+    func fetchAllNews(country: DunbleNews.Countries) async -> Result<DunbleNews.ServiceModel, DunbleNews.RequestError> {
+        return await loadJson(filename: "NewsResponse",
+                              extensionType: .json,
+                              responseModel: DunbleNews.ServiceModel.self)
+    }
+    
+    func fetchSearchedNews(query: String) async -> Result<DunbleNews.ServiceModel, DunbleNews.RequestError> {
+        return await loadJson(filename: "NewsResponse",
+                              extensionType: .json,
+                              responseModel: DunbleNews.ServiceModel.self)
+    }
+    
+    func fetchNewsByCategory(country: DunbleNews.Countries, category: String) async -> Result<DunbleNews.ServiceModel, DunbleNews.RequestError> {
+        return await loadJson(filename: "NewsResponse",
+                              extensionType: .json,
+                              responseModel: DunbleNews.ServiceModel.self)
     }
 }

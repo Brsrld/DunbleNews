@@ -8,14 +8,14 @@
 import Foundation
 
 final class HomeViewModel: BaseViewModel<HomeViewStates> {
-    private let service: NewsServiceable
+    let service: NewsServiceable
     var showingAlert: Bool
     
     @Published private(set) var allNews: [Article]
     @Published var isloading:Bool = false
     
-    override init() {
-        self.service = NewsService()
+    init(service: NewsServiceable) {
+        self.service = service
         self.allNews = []
         self.showingAlert = false
     }

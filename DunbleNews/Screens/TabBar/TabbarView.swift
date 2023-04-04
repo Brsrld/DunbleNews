@@ -9,17 +9,18 @@ import SwiftUI
 
 struct TabbarView: View {
     @State var menuItemType: MenuItemType = .discover
-    
+    private let service: NewsServiceable
     init() {
         let navBarAppearance = UINavigationBar.appearance()
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: Colors.tabbarTextColor ?? .red]
         navBarAppearance.titleTextAttributes = [.foregroundColor:  Colors.tabbarTextColor ?? .red]
+        self.service = NewsService()
     }
     
     var body: some View {
         TabView(selection: $menuItemType) {
             TabItemView(MenuItemType.home) {
-                HomeView()
+                HomeView(service: service)
             }
             TabItemView(MenuItemType.discover) {
                 DiscoverView()

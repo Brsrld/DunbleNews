@@ -17,7 +17,7 @@ class HomeViewModelTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        homeViewModel = HomeViewModel()
+        homeViewModel = HomeViewModel(service: MockHttpClient())
     }
     
     override func tearDown() {
@@ -27,8 +27,10 @@ class HomeViewModelTest: XCTestCase {
     }
     
     func test_news_Success() async {
-        await homeViewModel.service.fetchAllNews(country: .us)
-        await fulfillment(of: [fetchNewsExpectation])
+        homeViewModel.serviceInitialize()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
+            XCTAssertEqual(self.homeViewModel.allNews.count, 1)
+            fetchNewsExpectation.fulfill()
+        }
     }
-    
 }

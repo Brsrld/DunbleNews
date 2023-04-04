@@ -46,8 +46,8 @@ struct CacheAsyncImage<Content>: View where Content: View {
 
 struct CacheAsyncImage_Previews: PreviewProvider {
     static var previews: some View {
-        let imageURL = URL(string: "https://www.reuters.com/resizer/-9uubUtwVpA0QW9zWGHoxPLwhBk=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/PW5QFB7KPVL4HLO3EMDE3LUJFM.jpg") ?? .applicationDirectory
-        CacheAsyncImage(url: imageURL) { phase in
+        if let imageURL = URL(string: "https://www.reuters.com/resizer/-9uubUtwVpA0QW9zWGHoxPLwhBk=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/PW5QFB7KPVL4HLO3EMDE3LUJFM.jpg") {
+            CacheAsyncImage(url: imageURL) { phase in
             switch phase {
             case .empty:
                 ProgressView()
@@ -59,6 +59,7 @@ struct CacheAsyncImage_Previews: PreviewProvider {
                 fatalError()
             }
         }
+    }
     }
 }
 

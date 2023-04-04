@@ -33,7 +33,7 @@ extension Mockable {
         }
         
         do {
-            let data = try await Data(contentsOf: path)
+            let data = try Data(contentsOf: path)
             let decodedObject = try JSONDecoder().decode(T.self, from: data)
             return .success(decodedObject)
         } catch {

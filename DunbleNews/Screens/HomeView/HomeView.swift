@@ -14,8 +14,8 @@ struct HomeView: View {
         baseView()
     }
     
-    init() {
-        self._viewModel = ObservedObject(wrappedValue: HomeViewModel())
+    init(service: NewsServiceable) {
+        self._viewModel = ObservedObject(wrappedValue: HomeViewModel(service: service))
     }
     
     @ViewBuilder
@@ -55,6 +55,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(service: NewsService())
     }
 }
