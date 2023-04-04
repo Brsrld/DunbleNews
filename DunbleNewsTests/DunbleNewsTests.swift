@@ -2,7 +2,7 @@
 //  DunbleNewsTests.swift
 //  DunbleNewsTests
 //
-//  Created by Barış ŞARALDI on 1.04.2023.
+//  Created by Barış ŞARALDI on 4.04.2023.
 //
 
 import XCTest

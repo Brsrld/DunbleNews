@@ -20,6 +20,10 @@
 		552827DA29C09EE300917F95 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552827D929C09EE300917F95 /* HttpClient.swift */; };
 		552827DC29C09EF500917F95 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552827DB29C09EF500917F95 /* Services.swift */; };
 		552827DF29C09F4300917F95 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552827DE29C09F4300917F95 /* ServiceModel.swift */; };
+		5558000429DC45DB00D51A29 /* Mockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5558000329DC45DB00D51A29 /* Mockable.swift */; };
+		5558000729DC461A00D51A29 /* MockHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5558000629DC461A00D51A29 /* MockHttpClient.swift */; };
+		5558000A29DC52D900D51A29 /* HomeViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5558000929DC52D900D51A29 /* HomeViewModelTest.swift */; };
+		5558FFFB29DC453300D51A29 /* DunbleNewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5558FFFA29DC453300D51A29 /* DunbleNewsTests.swift */; };
 		555D57A729D71BB2001D46C8 /* NewsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D57A629D71BB2001D46C8 /* NewsListView.swift */; };
 		555D57AB29D71FB2001D46C8 /* CustomStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D57AA29D71FB2001D46C8 /* CustomStateView.swift */; };
 		555D57AD29D72033001D46C8 /* NewsCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D57AC29D72033001D46C8 /* NewsCellItem.swift */; };
@@ -52,6 +56,16 @@
 		55BC00E329C09483007EDFEC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC00E229C09483007EDFEC /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5558FFFC29DC453300D51A29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55BC00B329C08D3D007EDFEC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55BC00BA29C08D3D007EDFEC;
+			remoteInfo = DunbleNews;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5502BDF229D454C30071F585 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		5502BDF429D454E60071F585 /* BaseViewStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewStates.swift; sourceTree = "<group>"; };
@@ -66,6 +80,12 @@
 		552827D929C09EE300917F95 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		552827DB29C09EF500917F95 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		552827DE29C09F4300917F95 /* ServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
+		5558000129DC455400D51A29 /* NewsResponse.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = NewsResponse.geojson; sourceTree = "<group>"; };
+		5558000329DC45DB00D51A29 /* Mockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mockable.swift; sourceTree = "<group>"; };
+		5558000629DC461A00D51A29 /* MockHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHttpClient.swift; sourceTree = "<group>"; };
+		5558000929DC52D900D51A29 /* HomeViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTest.swift; sourceTree = "<group>"; };
+		5558FFF829DC453300D51A29 /* DunbleNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DunbleNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5558FFFA29DC453300D51A29 /* DunbleNewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DunbleNewsTests.swift; sourceTree = "<group>"; };
 		555D57A629D71BB2001D46C8 /* NewsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListView.swift; sourceTree = "<group>"; };
 		555D57AA29D71FB2001D46C8 /* CustomStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStateView.swift; sourceTree = "<group>"; };
 		555D57AC29D72033001D46C8 /* NewsCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCellItem.swift; sourceTree = "<group>"; };
@@ -101,6 +121,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5558FFF529DC453300D51A29 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55BC00B829C08D3D007EDFEC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -193,6 +220,42 @@
 			path = ServiceModels;
 			sourceTree = "<group>";
 		};
+		5558000229DC45D000D51A29 /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				5558000129DC455400D51A29 /* NewsResponse.geojson */,
+				5558000329DC45DB00D51A29 /* Mockable.swift */,
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
+		5558000529DC460900D51A29 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				5558000629DC461A00D51A29 /* MockHttpClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		5558000829DC52BE00D51A29 /* ViewModelTest */ = {
+			isa = PBXGroup;
+			children = (
+				5558000929DC52D900D51A29 /* HomeViewModelTest.swift */,
+			);
+			path = ViewModelTest;
+			sourceTree = "<group>";
+		};
+		5558FFF929DC453300D51A29 /* DunbleNewsTests */ = {
+			isa = PBXGroup;
+			children = (
+				5558000829DC52BE00D51A29 /* ViewModelTest */,
+				5558000529DC460900D51A29 /* Network */,
+				5558000229DC45D000D51A29 /* MockData */,
+				5558FFFA29DC453300D51A29 /* DunbleNewsTests.swift */,
+			);
+			path = DunbleNewsTests;
+			sourceTree = "<group>";
+		};
 		555D57AE29D724E4001D46C8 /* SelectedDiscoverView */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				55BC00BD29C08D3D007EDFEC /* DunbleNews */,
+				5558FFF929DC453300D51A29 /* DunbleNewsTests */,
 				55BC00BC29C08D3D007EDFEC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -232,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				55BC00BB29C08D3D007EDFEC /* DunbleNews.app */,
+				5558FFF829DC453300D51A29 /* DunbleNewsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -333,6 +398,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5558FFF729DC453300D51A29 /* DunbleNewsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5558000029DC453300D51A29 /* Build configuration list for PBXNativeTarget "DunbleNewsTests" */;
+			buildPhases = (
+				5558FFF429DC453300D51A29 /* Sources */,
+				5558FFF529DC453300D51A29 /* Frameworks */,
+				5558FFF629DC453300D51A29 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5558FFFD29DC453300D51A29 /* PBXTargetDependency */,
+			);
+			name = DunbleNewsTests;
+			productName = DunbleNewsTests;
+			productReference = 5558FFF829DC453300D51A29 /* DunbleNewsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		55BC00BA29C08D3D007EDFEC /* DunbleNews */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55BC00C929C08D3E007EDFEC /* Build configuration list for PBXNativeTarget "DunbleNews" */;
@@ -357,9 +440,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1420;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					5558FFF729DC453300D51A29 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 55BC00BA29C08D3D007EDFEC;
+					};
 					55BC00BA29C08D3D007EDFEC = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -379,11 +466,19 @@
 			projectRoot = "";
 			targets = (
 				55BC00BA29C08D3D007EDFEC /* DunbleNews */,
+				5558FFF729DC453300D51A29 /* DunbleNewsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5558FFF629DC453300D51A29 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55BC00B929C08D3D007EDFEC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -396,6 +491,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5558FFF429DC453300D51A29 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5558000729DC461A00D51A29 /* MockHttpClient.swift in Sources */,
+				5558FFFB29DC453300D51A29 /* DunbleNewsTests.swift in Sources */,
+				5558000429DC45DB00D51A29 /* Mockable.swift in Sources */,
+				5558000A29DC52D900D51A29 /* HomeViewModelTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55BC00B729C08D3D007EDFEC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -446,7 +552,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5558FFFD29DC453300D51A29 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55BC00BA29C08D3D007EDFEC /* DunbleNews */;
+			targetProxy = 5558FFFC29DC453300D51A29 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		5558FFFE29DC453300D51A29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UTN2596CAS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = brsrld.DunbleNewsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DunbleNews.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DunbleNews";
+			};
+			name = Debug;
+		};
+		5558FFFF29DC453300D51A29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UTN2596CAS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = brsrld.DunbleNewsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DunbleNews.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DunbleNews";
+			};
+			name = Release;
+		};
 		55BC00C729C08D3E007EDFEC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -580,6 +732,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,6 +765,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -628,6 +782,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5558000029DC453300D51A29 /* Build configuration list for PBXNativeTarget "DunbleNewsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5558FFFE29DC453300D51A29 /* Debug */,
+				5558FFFF29DC453300D51A29 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		55BC00B629C08D3D007EDFEC /* Build configuration list for PBXProject "DunbleNews" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
