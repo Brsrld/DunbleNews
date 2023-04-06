@@ -10,6 +10,7 @@ import Foundation
 final class SearchViewModel: BaseViewModel<SearchViewStates> {
     private let service: NewsServiceable
     var showingAlert: Bool
+    
     @Published var isloading: Bool
     @Published var searchQuery: String
     @Published private(set) var news: [Article]

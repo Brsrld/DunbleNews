@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DiscoverView: View {
-    @ObservedObject var viewModel: DiscoveryViewModel
+    @ObservedObject private var viewModel: DiscoveryViewModel
     
     init() {
         self._viewModel = ObservedObject(wrappedValue: DiscoveryViewModel())

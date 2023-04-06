@@ -29,7 +29,7 @@ extension Mockable {
                                 responseModel: T.Type) async -> Result<T, RequestError> {
         guard let path = bundle.url(forResource: filename,
                                     withExtension: extensionType.rawValue) else {
-            fatalError("Failed to load Json file.")
+            return .failure(.invalidURL)
         }
         
         do {

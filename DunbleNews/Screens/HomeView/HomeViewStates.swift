@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum HomeViewStates: ViewStateProtocol {
+enum HomeViewStates: ViewStateProtocol, Equatable {
     case ready
     case loading
     case finished

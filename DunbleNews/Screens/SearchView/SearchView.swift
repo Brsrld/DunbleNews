@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchView: View {
-    @ObservedObject var viewModel: SearchViewModel
+    @ObservedObject private var viewModel: SearchViewModel
     
     init() {
         self._viewModel = ObservedObject(wrappedValue: SearchViewModel())
