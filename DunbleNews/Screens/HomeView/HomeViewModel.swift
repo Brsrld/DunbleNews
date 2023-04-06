@@ -28,19 +28,8 @@ final class HomeViewModel: BaseViewModel<HomeViewStates> {
         changeState(.empty)
     }
     
-    func loadMoreContent(item: Article?) {
-        guard let lastTitle = allNews.last?.title,
-        let itemTitle = item?.title else { return }
-        
-        if lastTitle == itemTitle {
-            fetchNews()
-        }
-    }
-    
     private func fetchNews() {
-        if allNews.isEmpty {
-            changeState(.loading)
-        }
+        changeState(.loading)
         Task { [weak self] in
             guard let self = self else { return }
             let result = await self.service.fetchAllNews(country: .us)

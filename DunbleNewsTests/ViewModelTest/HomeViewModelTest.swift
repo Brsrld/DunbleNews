@@ -11,9 +11,6 @@ import XCTest
 class HomeViewModelTest: XCTestCase {
     var homeViewModel: HomeViewModel!
     
-    let fetchNewsExpectation = XCTestExpectation(description: "Fetched News")
-    let fetchedWithErrorExpectation = XCTestExpectation(description: "Fetched Error")
-    
     override func setUp() {
         super.setUp()
         
@@ -26,11 +23,11 @@ class HomeViewModelTest: XCTestCase {
         super.tearDown()
     }
     
-    func test_news_Success() async {
+    func test_news_Success() {
+        let exp = expectValue(of: homeViewModel.$allNews.eraseToAnyPublisher(),
+                              expectationDescription: "Fetched News",
+                              equals: [{ $0.count == 1}])
         homeViewModel.serviceInitialize()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
-            XCTAssertEqual(self.homeViewModel.allNews.count, 1)
-            fetchNewsExpectation.fulfill()
-        }
+        wait(for: [exp.expectation], timeout: 1)
     }
 }
