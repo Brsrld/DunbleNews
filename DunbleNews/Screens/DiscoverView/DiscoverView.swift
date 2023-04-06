@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct DiscoverView: View {
-    @ObservedObject private var viewModel: DiscoveryViewModel
+    @ObservedObject private var viewModel: DiscoverViewModel
     
     init() {
-        self._viewModel = ObservedObject(wrappedValue: DiscoveryViewModel())
+        self._viewModel = ObservedObject(wrappedValue: DiscoverViewModel())
     }
     
     var body: some View {

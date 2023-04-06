@@ -6,12 +6,14 @@
 //
 
 import XCTest
+import Combine
 @testable import DunbleNews
 
 class HomeViewModelTest: XCTestCase {
-    var homeViewModel: HomeViewModel!
+    private var homeViewModel: HomeViewModel!
+    private var cancellable: AnyCancellable?
     private var filename = "NewsResponse"
-    let isloadingExpectation = XCTestExpectation(description: "isLoading true")
+    private let isloadingExpectation = XCTestExpectation(description: "isLoading true")
     
     override func setUp() {
         super.setUp()
@@ -25,14 +27,14 @@ class HomeViewModelTest: XCTestCase {
         super.tearDown()
     }
     
-    func test_ready_State() {
+     func test_ready_State() {
         let expectation = expectValue(of: homeViewModel.$states.eraseToAnyPublisher(),
                                       expectationDescription: "is state ready",
                                       equals: [{ $0 == .ready}])
         wait(for: [expectation.expectation], timeout: 1)
     }
     
-    func test_finished_State() {
+     func test_finished_State() {
         let expectation = expectValue(of: homeViewModel.$states.eraseToAnyPublisher(),
                                       expectationDescription: "is state finished",
                                       equals: [{ $0 == .finished}])
@@ -40,7 +42,7 @@ class HomeViewModelTest: XCTestCase {
         wait(for: [expectation.expectation], timeout: 1)
     }
     
-    func test_loading_State() {
+     func test_loading_State() {
         let expectation = expectValue(of: homeViewModel.$states.eraseToAnyPublisher(),
                                       expectationDescription: "is state loading",
                                       equals: [{ $0 == .loading}])
@@ -48,7 +50,7 @@ class HomeViewModelTest: XCTestCase {
         wait(for: [expectation.expectation], timeout: 1)
     }
     
-    func test_error_State() {
+     func test_error_State() {
         filename = "error"
         setUp()
         let expectation = expectValue(of: homeViewModel.$states.eraseToAnyPublisher(),
@@ -58,19 +60,19 @@ class HomeViewModelTest: XCTestCase {
         wait(for: [expectation.expectation], timeout: 1)
     }
     
-    func test_ShowingAlert() {
+     func test_ShowingAlert() {
         filename = "error"
         setUp()
         homeViewModel.serviceInitialize()
         
-        let exp = homeViewModel.objectWillChange.eraseToAnyPublisher().sink { _ in
+        cancellable = homeViewModel.objectWillChange.eraseToAnyPublisher().sink { _ in
             XCTAssertEqual(self.homeViewModel.showingAlert, true)
             self.isloadingExpectation.fulfill()
         }
         wait(for: [isloadingExpectation], timeout: 1)
     }
     
-    func test_empty_State() {
+     func test_empty_State() {
         let expectation = expectValue(of: homeViewModel.$states.eraseToAnyPublisher(),
                                       expectationDescription: "is state empty",
                                       equals: [{ $0 == .empty}])
@@ -79,7 +81,7 @@ class HomeViewModelTest: XCTestCase {
     }
     
     
-    func test_news_Success() {
+     func test_news_Success() {
         let expectation = expectValue(of: homeViewModel.$allNews.eraseToAnyPublisher(),
                                       expectationDescription: "Fetched News",
                                       equals: [{ $0.count == 1}])

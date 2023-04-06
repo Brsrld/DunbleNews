@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class DiscoveryViewModel: BaseViewModel<DiscoveryViewStates> {
+final class DiscoverViewModel: BaseViewModel<DiscoveryViewStates> {
     
     var defaultCategory: NewsCategories
     var allCategories: NewsCategories.AllCases
