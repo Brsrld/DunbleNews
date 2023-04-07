@@ -58,13 +58,6 @@ struct DiscoverView: View {
         }
                       .padding(.bottom, 2)
     }
-    
-    private func columnGrid() -> [GridItem] {
-        return   [
-            GridItem(.flexible()),
-            GridItem(.flexible())
-        ]
-    }
 }
 
 struct DiscoverView_Previews: PreviewProvider {

@@ -10,6 +10,7 @@ import SwiftUI
 struct TabbarView: View {
     @State var menuItemType: MenuItemType = .discover
     private let service: NewsServiceable
+    
     init() {
         let navBarAppearance = UINavigationBar.appearance()
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: Colors.tabbarTextColor ?? .red]

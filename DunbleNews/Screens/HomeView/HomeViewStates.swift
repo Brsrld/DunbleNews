@@ -7,10 +7,12 @@
 
 import Foundation
 
-enum HomeViewStates: ViewStateProtocol, Equatable {
+enum HomeViewStates: ViewStateProtocol {
     case ready
     case loading
     case finished
     case error(error: String)
     case empty
 }
+
+extension HomeViewStates: Equatable {}
