@@ -15,6 +15,7 @@ protocol NewsServiceable {
 }
 
 struct NewsService: HTTPClient, NewsServiceable {
+    
     func fetchNewsByCategory(country: Countries, category: String) async -> Result<ServiceModel, RequestError> {
         return await sendRequest(endpoint: NewsEndpoint.newsByCategory(category: category, country: country), responseModel: ServiceModel.self)
     }

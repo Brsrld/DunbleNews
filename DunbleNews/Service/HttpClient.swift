@@ -9,13 +9,14 @@ import Foundation
 import SwiftUI
 
 protocol HTTPClient {
-    func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type) async -> Result<T, RequestError>
+    func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type, urlSession: URLSession?) async -> Result<T, RequestError>
 }
 
 extension HTTPClient {
     func sendRequest<T: Decodable>(
         endpoint: Endpoint,
-        responseModel: T.Type
+        responseModel: T.Type,
+        urlSession: URLSession? = nil
     ) async -> Result<T, RequestError> {
         var urlComponents = URLComponents()
         urlComponents.scheme = endpoint.scheme
@@ -36,12 +37,23 @@ extension HTTPClient {
         }
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request, delegate: nil)
-            guard let response = response as? HTTPURLResponse else {
+            var dataAndResponse: (Data, URLResponse)?
+            
+            if let session = urlSession {
+                dataAndResponse = try await session.data(for: request)
+            } else {
+                dataAndResponse = try await URLSession.shared.data(for: request, delegate: nil)
+            }
+                
+           
+            guard let response = dataAndResponse?.1 as? HTTPURLResponse else {
                 return .failure(.noResponse)
             }
             switch response.statusCode {
             case 200...299:
+                guard let data = dataAndResponse?.0 else {
+                    return .failure(.unknown)
+                }
                 guard let decodedResponse = try? JSONDecoder().decode(responseModel, from: data) else {
                     return .failure(.decode)
                 }
