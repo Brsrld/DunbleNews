@@ -14,3 +14,5 @@ enum SelectedDiscoverViewStates: ViewStateProtocol {
     case error(error: String)
     case empty
 }
+
+extension SelectedDiscoverViewStates: Equatable {}

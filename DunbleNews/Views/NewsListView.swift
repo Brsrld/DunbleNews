@@ -10,7 +10,7 @@ import SwiftUI
 struct NewsListView: View {
     
     let news:[Article]
-    @Binding var isloading: Bool
+    @State var isloading = false
     
     var body: some View {
         StaggeredGrid(list: news,

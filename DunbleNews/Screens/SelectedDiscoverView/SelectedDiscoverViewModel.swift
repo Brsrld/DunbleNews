@@ -10,15 +10,14 @@ import Foundation
 final class SelectedDiscoverViewModel: BaseViewModel<SelectedDiscoverViewStates> {
     private let service: NewsServiceable
     var showingAlert: Bool
-    @Published var isloading:Bool
+    
     @Published private(set) var news: [Article]
-    private(set) var category: String
+    private(set) var category: NewsCategories
    
-    init(category: String) {
-        self.service = NewsService()
+    init(category: NewsCategories, service: NewsServiceable) {
+        self.service = service
         self.news = []
         self.showingAlert = false
-        self.isloading = false
         self.category = category
     }
     
@@ -34,7 +33,7 @@ final class SelectedDiscoverViewModel: BaseViewModel<SelectedDiscoverViewStates>
         changeState(.loading)
         Task { [weak self] in
             guard let self = self else { return }
-            let result = await self.service.fetchNewsByCategory(country: .us, category: category)
+            let result = await self.service.fetchNewsByCategory(country: .us, category: category.title.lowercased())
             self.changeState(.finished)
             switch result {
             case .success(let success):

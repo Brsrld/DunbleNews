@@ -22,8 +22,7 @@ struct HomeView: View {
     private func baseView() -> some View {
         switch viewModel.states {
         case .finished:
-            NewsListView(news: viewModel.allNews,
-                         isloading: $viewModel.isloading)
+            NewsListView(news: viewModel.allNews)
                 .showTabBar()
         case .loading:
             ProgressView("Loading")

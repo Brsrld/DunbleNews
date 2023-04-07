@@ -12,19 +12,20 @@ struct SelectedDiscoverView: View {
     
     var body: some View {
         baseView()
-            .navigationTitle(viewModel.category.capitalized)
+            .navigationTitle(viewModel.category.title.capitalized)
     }
     
-    init(category: String) {
-        self._viewModel = StateObject(wrappedValue: SelectedDiscoverViewModel(category: category))
+    init(category: NewsCategories,
+         service: NewsServiceable) {
+        self._viewModel = StateObject(wrappedValue: SelectedDiscoverViewModel(category: category,
+                                                                              service: service))
     }
     
     @ViewBuilder
     private func baseView() -> some View {
         switch viewModel.states {
         case .finished:
-            NewsListView(news: viewModel.news,
-                         isloading: $viewModel.isloading)
+            NewsListView(news: viewModel.news)
             .hideTabbar()
         case .loading:
             ProgressView("Loading")
@@ -56,6 +57,7 @@ struct SelectedDiscoverView: View {
 
 struct SelectedDiscoverView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectedDiscoverView(category: "technology")
+        SelectedDiscoverView(category: .technology,
+                             service: NewsService())
     }
 }

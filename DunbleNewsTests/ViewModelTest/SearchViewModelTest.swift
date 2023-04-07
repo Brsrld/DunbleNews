@@ -6,13 +6,13 @@
 //
 
 import Foundation
-
 import XCTest
 import Combine
 @testable import DunbleNews
 
 class SearchViewModelTest: XCTestCase {
     private var searchViewModel: SearchViewModel!
+    private var cancellable: AnyCancellable?
     
     private var filename = "NewsResponse"
     private var searchQuerySuccesses = "Half Life"
@@ -20,6 +20,7 @@ class SearchViewModelTest: XCTestCase {
     
     private let searchQuerySuccessesExpectation = XCTestExpectation(description: "search query is valid")
     private let searchQueryFailExpectation = XCTestExpectation(description: "search query does not valid")
+    private let isloadingExpectation = XCTestExpectation(description: "isLoading true")
     
     override func setUp() {
         super.setUp()
@@ -86,5 +87,16 @@ class SearchViewModelTest: XCTestCase {
        searchViewModel.changeStateToEmpty()
        wait(for: [expectation.expectation], timeout: 1)
    }
-   
+    
+    func test_ShowingAlert() {
+       filename = "error"
+       setUp()
+       searchViewModel.checkValidation()
+       
+       cancellable = searchViewModel.objectWillChange.eraseToAnyPublisher().sink { _ in
+           XCTAssertEqual(self.searchViewModel.showingAlert, true)
+           self.isloadingExpectation.fulfill()
+       }
+       wait(for: [isloadingExpectation], timeout: 1)
+   }
 }

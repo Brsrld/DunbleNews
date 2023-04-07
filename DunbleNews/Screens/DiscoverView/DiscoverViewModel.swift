@@ -9,12 +9,14 @@ import Foundation
 
 final class DiscoverViewModel: BaseViewModel<DiscoveryViewStates> {
     
+    let service: NewsServiceable
     var defaultCategory: NewsCategories
     var allCategories: NewsCategories.AllCases
     
-    override init() {
+    init(service: NewsServiceable) {
         self.defaultCategory = NewsCategories.general
         self.allCategories = NewsCategories.allCases.filter { $0.title != NewsCategories.allCases.first?.title }
+        self.service = service
     }
 }
 

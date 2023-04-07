@@ -23,7 +23,7 @@ struct TabbarView: View {
                 HomeView(service: service)
             }
             TabItemView(MenuItemType.discover) {
-                DiscoverView()
+                DiscoverView(service: service)
             }
             TabItemView(MenuItemType.search) {
                 SearchView(service: service)

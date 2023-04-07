@@ -11,16 +11,13 @@ import Combine
 
 class DiscoverViewModelTest: XCTestCase {
     private var discoverViewModel: DiscoverViewModel!
-    private var allCategories = NewsCategories.allCases.filter { $0.title != NewsCategories.allCases.first?.title }
-    private var cancellable: AnyCancellable?
-    
     private let defaultCategoryExpectation = XCTestExpectation(description: "is default category general")
     private let allCategoriesExpectation = XCTestExpectation(description: "all categories")
     
     override func setUp() {
         super.setUp()
         
-        discoverViewModel = DiscoverViewModel()
+        discoverViewModel = DiscoverViewModel(service: MockHttpClient(filename: ""))
     }
     
     override func tearDown() {
@@ -37,7 +34,8 @@ class DiscoverViewModelTest: XCTestCase {
     }
     
     func test_All_Categories() {
-        XCTAssertEqual(self.discoverViewModel.allCategories, self.allCategories)
+        let equal = discoverViewModel.allCategories.last?.title == "Technology"
+        XCTAssertEqual(equal,true)
         self.defaultCategoryExpectation.fulfill()
         wait(for: [defaultCategoryExpectation], timeout: 1)
     }

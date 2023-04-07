@@ -45,7 +45,7 @@ struct SearchView: View {
                       ))
             }
         case .finished:
-            NewsListView(news: viewModel.news, isloading: $viewModel.isloading)
+            NewsListView(news: viewModel.news)
                 .showTabBar()
         case .loading:
             ProgressView("Loading")

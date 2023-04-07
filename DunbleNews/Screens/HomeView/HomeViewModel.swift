@@ -12,7 +12,6 @@ final class HomeViewModel: BaseViewModel<HomeViewStates> {
     var showingAlert: Bool
     
     @Published private(set) var allNews: [Article]
-    @Published var isloading:Bool = false
     
     init(service: NewsServiceable) {
         self.service = service
