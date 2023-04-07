@@ -15,8 +15,8 @@ final class SearchViewModel: BaseViewModel<SearchViewStates> {
     @Published var searchQuery: String
     @Published private(set) var news: [Article]
    
-    override init() {
-        self.service = NewsService()
+    init(service: NewsServiceable) {
+        self.service = service
         self.news = []
         self.showingAlert = false
         self.isloading = false
@@ -25,6 +25,15 @@ final class SearchViewModel: BaseViewModel<SearchViewStates> {
     
     func serviceInitialize() {
         fetchNews()
+    }
+    
+    func checkValidation() {
+        if searchQuery.isValid() {
+            changeState(.error(error: "Search string not valid"))
+            self.showingAlert.toggle()
+        } else {
+            fetchNews()
+        }
     }
     
     func changeStateToEmpty() {

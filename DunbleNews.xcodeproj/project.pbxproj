@@ -57,6 +57,7 @@
 		55BC00E129C09478007EDFEC /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC00E029C09478007EDFEC /* SearchView.swift */; };
 		55BC00E329C09483007EDFEC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC00E229C09483007EDFEC /* HomeView.swift */; };
 		55F2E88829DF80AE009A3202 /* DiscoverViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F2E88729DF80AE009A3202 /* DiscoverViewModelTest.swift */; };
+		55F2E88A29DF867F009A3202 /* SearchViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F2E88929DF867F009A3202 /* SearchViewModelTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		55BC00E029C09478007EDFEC /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		55BC00E229C09483007EDFEC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		55F2E88729DF80AE009A3202 /* DiscoverViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModelTest.swift; sourceTree = "<group>"; };
+		55F2E88929DF867F009A3202 /* SearchViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +249,7 @@
 			children = (
 				5558000929DC52D900D51A29 /* HomeViewModelTest.swift */,
 				55F2E88729DF80AE009A3202 /* DiscoverViewModelTest.swift */,
+				55F2E88929DF867F009A3202 /* SearchViewModelTest.swift */,
 			);
 			path = ViewModelTest;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				5558000429DC45DB00D51A29 /* Mockable.swift in Sources */,
 				5558000A29DC52D900D51A29 /* HomeViewModelTest.swift in Sources */,
 				55F2E88829DF80AE009A3202 /* DiscoverViewModelTest.swift in Sources */,
+				55F2E88A29DF867F009A3202 /* SearchViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

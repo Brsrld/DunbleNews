@@ -20,5 +20,13 @@ extension String {
             return "\(abs(date.days(from: .now))) hours"
         }
     }
+    
+    func isValid() -> Bool {
+        if self.first == " " {
+            return true
+        } else {
+            return false
+        }
+    }
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SearchViewStates: ViewStateProtocol {
+enum SearchViewStates: ViewStateProtocol, Equatable {
     case ready
     case loading
     case finished

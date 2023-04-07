@@ -22,7 +22,7 @@ class HomeViewModelTest: XCTestCase {
     }
     
     override func tearDown() {
-        homeViewModel = nil
+        homeViewModel = nil 
         
         super.tearDown()
     }

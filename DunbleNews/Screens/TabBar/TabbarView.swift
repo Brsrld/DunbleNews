@@ -26,7 +26,7 @@ struct TabbarView: View {
                 DiscoverView()
             }
             TabItemView(MenuItemType.search) {
-                SearchView()
+                SearchView(service: service)
             }
         }
     }

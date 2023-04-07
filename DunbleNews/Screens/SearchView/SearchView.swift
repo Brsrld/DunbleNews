@@ -10,8 +10,8 @@ import SwiftUI
 struct SearchView: View {
     @ObservedObject private var viewModel: SearchViewModel
     
-    init() {
-        self._viewModel = ObservedObject(wrappedValue: SearchViewModel())
+    init(service: NewsServiceable) {
+        self._viewModel = ObservedObject(wrappedValue: SearchViewModel(service: service))
     }
     
     var body: some View {
@@ -20,7 +20,7 @@ struct SearchView: View {
                         placement: .toolbar,
                         prompt: "Search news")
             .onSubmit(of: .search) {
-                viewModel.serviceInitialize()
+                viewModel.checkValidation()
             }
     }
     
@@ -36,7 +36,7 @@ struct SearchView: View {
                             description: "Something get wrong !",
                             tintColor: .red)
             .alert(isPresented: $viewModel.showingAlert) {
-                Alert(title: Text("Error Message"),
+                Alert(title: Text("Error"),
                       message: Text(error),
                       dismissButton: Alert.Button.default(
                         Text("Ok"), action: {
@@ -59,6 +59,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView()
+        SearchView(service: NewsService())
     }
 }
