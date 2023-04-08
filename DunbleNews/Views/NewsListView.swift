@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct NewsListView: View {
-    
     let news:[Article]
     @State var isloading = false
     

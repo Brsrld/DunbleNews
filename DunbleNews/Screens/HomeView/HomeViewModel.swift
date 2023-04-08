@@ -40,7 +40,7 @@ final class HomeViewModel: BaseViewModel<HomeViewStates> {
                     self.allNews = articles
                 }
             case .failure(let failure):
-                self.changeState(.error(error: failure.localizedDescription))
+                self.changeState(.error(error: failure.customMessage))
                 self.showingAlert.toggle()
             }
         }

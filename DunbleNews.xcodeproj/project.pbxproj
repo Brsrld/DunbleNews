@@ -26,7 +26,6 @@
 		5558000429DC45DB00D51A29 /* Mockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5558000329DC45DB00D51A29 /* Mockable.swift */; };
 		5558000729DC461A00D51A29 /* MockHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5558000629DC461A00D51A29 /* MockHttpClient.swift */; };
 		5558000A29DC52D900D51A29 /* HomeViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5558000929DC52D900D51A29 /* HomeViewModelTest.swift */; };
-		5558FFFB29DC453300D51A29 /* DunbleNewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5558FFFA29DC453300D51A29 /* DunbleNewsTests.swift */; };
 		555D57A729D71BB2001D46C8 /* NewsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D57A629D71BB2001D46C8 /* NewsListView.swift */; };
 		555D57AB29D71FB2001D46C8 /* CustomStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D57AA29D71FB2001D46C8 /* CustomStateView.swift */; };
 		555D57AD29D72033001D46C8 /* NewsCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D57AC29D72033001D46C8 /* NewsCellItem.swift */; };
@@ -94,7 +93,6 @@
 		5558000629DC461A00D51A29 /* MockHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHttpClient.swift; sourceTree = "<group>"; };
 		5558000929DC52D900D51A29 /* HomeViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTest.swift; sourceTree = "<group>"; };
 		5558FFF829DC453300D51A29 /* DunbleNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DunbleNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5558FFFA29DC453300D51A29 /* DunbleNewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DunbleNewsTests.swift; sourceTree = "<group>"; };
 		555D57A629D71BB2001D46C8 /* NewsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListView.swift; sourceTree = "<group>"; };
 		555D57AA29D71FB2001D46C8 /* CustomStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStateView.swift; sourceTree = "<group>"; };
 		555D57AC29D72033001D46C8 /* NewsCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCellItem.swift; sourceTree = "<group>"; };
@@ -278,7 +276,6 @@
 				5558000829DC52BE00D51A29 /* ViewModelTest */,
 				5558000529DC460900D51A29 /* Network */,
 				5558000229DC45D000D51A29 /* MockData */,
-				5558FFFA29DC453300D51A29 /* DunbleNewsTests.swift */,
 			);
 			path = DunbleNewsTests;
 			sourceTree = "<group>";
@@ -532,7 +529,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5558000729DC461A00D51A29 /* MockHttpClient.swift in Sources */,
-				5558FFFB29DC453300D51A29 /* DunbleNewsTests.swift in Sources */,
 				55206DDC29E0533D00A74C41 /* HttpClientTest.swift in Sources */,
 				558EBC5929DF4450006836F9 /* XCTestCase+Extension.swift in Sources */,
 				55206DDA29E0523700A74C41 /* MockURLProtocol.swift in Sources */,

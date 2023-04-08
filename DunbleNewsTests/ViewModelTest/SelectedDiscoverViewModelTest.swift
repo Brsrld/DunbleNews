@@ -68,7 +68,7 @@ class SelectedDiscoverViewModelTest: XCTestCase {
         
         let expectation = expectValue(of: selectedDiscoverViewModel.$states.eraseToAnyPublisher(),
                                       expectationDescription: "is state error",
-                                      equals: [{ $0 == .error(error: RequestError.invalidURL.localizedDescription)}])
+                                      equals: [{ $0 == .error(error: RequestError.invalidURL.customMessage)}])
         selectedDiscoverViewModel.serviceInitialize()
         wait(for: [expectation.expectation], timeout: 1)
     }

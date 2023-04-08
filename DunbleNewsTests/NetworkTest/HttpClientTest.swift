@@ -45,6 +45,7 @@ class HttpClientTest: XCTestCase, Mockable, HTTPClient {
     
     override func tearDown() {
         urlSession = nil
+        endpoint = nil
         super.tearDown()
     }
     

@@ -14,6 +14,7 @@ final class MockHttpClient: NewsServiceable, Mockable {
     init(filename: String) {
         self.filename = filename
     }
+    
     func fetchAllNews(country: DunbleNews.Countries) async -> Result<DunbleNews.ServiceModel, DunbleNews.RequestError> {
         return await loadJson(filename: filename,
                               extensionType: .json,
