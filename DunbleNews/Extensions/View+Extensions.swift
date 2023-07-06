@@ -12,6 +12,7 @@ extension View {
     func toAnyView() -> AnyView {
         AnyView(self)
     }
+    //ele bele
     
     func hideTabbar() -> some View {
         return self.modifier(HideTabbar())
